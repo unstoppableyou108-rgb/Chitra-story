@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From Our Studio To Your Walls — Chitra Story</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap');
+
+  :root{
+    --cream:#FBF3E7;
+    --rust:#C1602E;
+    --rust-deep:#A34A22;
+    --gold:#B9852E;
+    --gold-soft:#E4C387;
+    --olive:#5F7A6E;
+    --ink:#2C2115;
+    --navy:#22394A;
+    --ink-soft:#6B584A;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Karla', sans-serif;
+  }
+
+  .cs-section{
+    max-width:1240px;
+    margin:0 auto;
+    padding:56px 40px 60px;
+    position:relative;
+  }
+
+  /* ---------- Header ---------- */
+  .cs-header{
+    display:grid;
+    grid-template-columns:auto 1px 1fr auto;
+    align-items:center;
+    gap:28px;
+    padding-bottom:28px;
+  }
+
+  .cs-logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+
+  .cs-logo svg{ width:52px; height:52px; }
+
+  .cs-logo-text{ line-height:1.05; }
+
+  .cs-logo-text .name{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.7rem;
+    color:var(--navy);
+  }
+
+  .cs-logo-text .tag{
+    display:block;
+    font-size:0.62rem;
+    letter-spacing:0.16em;
+    color:var(--rust-deep);
+    margin-top:2px;
+    font-weight:700;
+  }
+
+  .cs-divider{
+    width:1px;
+    height:70px;
+    background:var(--ink);
+    opacity:0.25;
+    justify-self:center;
+  }
+
+  .cs-title h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(1.9rem, 3.4vw, 2.7rem);
+    line-height:1.16;
+    margin:0;
+    color:var(--navy);
+  }
+
+  .cs-title h1 .accent{
+    display:block;
+    color:var(--rust);
+    font-weight:600;
+  }
+
+  .cs-title p{
+    margin:10px 0 0;
+    font-size:1rem;
+    color:var(--ink-soft);
+  }
+
+  .cs-eyebrow{
+    text-align:right;
+    font-size:0.72rem;
+    font-weight:700;
+    letter-spacing:0.14em;
+    color:var(--olive);
+    line-height:1.9;
+  }
+
+  /* ---------- Journey ---------- */
+  .journey{
+    position:relative;
+    padding-top:20px;
+  }
+
+  .journey-path{
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    z-index:0;
+    pointer-events:none;
+  }
+
+  .step-row{
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns:1fr 64px 1fr;
+    align-items:center;
+    gap:0 28px;
+    min-height:230px;
+  }
+
+  .step-row .node{
+    grid-column:2;
+    width:56px; height:56px;
+    border-radius:50%;
+    background:var(--gold);
+    color:#fff;
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.3rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 6px 14px -4px rgba(185,133,46,0.55);
+    justify-self:center;
+  }
+
+  .step-text h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.28rem;
+    margin:0 0 10px;
+    color:var(--navy);
+  }
+
+  .badge{
+    display:inline-block;
+    background:var(--gold);
+    color:#fff;
+    font-size:0.74rem;
+    font-weight:700;
+    letter-spacing:0.03em;
+    padding:5px 14px;
+    border-radius:999px;
+    margin-bottom:10px;
+  }
+
+  .step-text p{
+    margin:0;
+    font-size:0.97rem;
+    line-height:1.62;
+    color:var(--ink-soft);
+    max-width:36ch;
+  }
+
+  .step-text strong{ color:var(--rust); font-weight:700; }
+
+  .step-visual{
+    border-radius:16px;
+    overflow:hidden;
+    aspect-ratio:16/10;
+    box-shadow:0 16px 32px -18px rgba(44,33,21,0.4);
+    border:1px solid rgba(185,133,46,0.25);
+  }
+
+  .step-visual svg{ width:100%; height:100%; display:block; }
+
+  /* alternate sides: odd rows = text left / image right, even = image left / text right */
+  .step-row.left .step-text{ grid-column:1; text-align:left; }
+  .step-row.left .step-visual{ grid-column:3; }
+
+  .step-row.right .step-visual{ grid-column:1; }
+  .step-row.right .step-text{ grid-column:3; text-align:left; }
+
+  /* ---------- Progress bar ---------- */
+  .progress{
+    margin-top:36px;
+    padding-top:30px;
+    border-top:1px solid rgba(44,33,21,0.12);
+  }
+
+  .progress-track{
+    position:relative;
+    height:6px;
+    border-radius:999px;
+    background:linear-gradient(90deg, var(--gold-soft), var(--olive));
+    margin:0 6px 14px;
+  }
+
+  .progress-labels{
+    display:flex;
+    justify-content:space-between;
+    position:relative;
+  }
+
+  .progress-labels span{
+    font-size:0.72rem;
+    font-weight:700;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+  }
+
+  .progress-dot{
+    position:absolute;
+    top:-9px;
+    width:18px; height:18px;
+    border-radius:50%;
+    background:#fff;
+    border:4px solid var(--gold);
+  }
+  .progress-dot.d0{ left:0; }
+  .progress-dot.d1{ left:33.33%; transform:translateX(-50%); }
+  .progress-dot.d2{ left:66.66%; transform:translateX(-50%); border-color:var(--olive); }
+  .progress-dot.d3{ left:100%; transform:translateX(-100%); border-color:var(--olive); }
+
+  /* ---------- Footer quote ---------- */
+  .cs-quote{
+    text-align:right;
+    margin-top:40px;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.15rem;
+    color:var(--ink);
+    line-height:1.6;
+  }
+
+  .cs-quote strong{ color:var(--rust-deep); font-weight:600; font-style:normal; }
+
+  @media (max-width:900px){
+    .cs-header{ grid-template-columns:1fr; text-align:left; }
+    .cs-divider{ display:none; }
+    .cs-eyebrow{ display:none; }
+
+    .journey-path{ display:none; }
+
+    .step-row{
+      grid-template-columns:56px 1fr;
+      row-gap:14px;
+      min-height:0;
+      padding-bottom:34px;
+    }
+    .step-row .node{ grid-column:1; grid-row:1 / span 2; align-self:start; }
+    .step-row.left .step-text,
+    .step-row.right .step-text{ grid-column:2; grid-row:1; }
+    .step-row.left .step-visual,
+    .step-row.right .step-visual{ grid-column:2; grid-row:2; }
+    .step-text p{ max-width:none; }
+
+    .cs-quote{ text-align:left; }
+  }
+</style>
+</head>
+<body>
+
+<section class="cs-section">
+
+  <header class="cs-header">
+    <div class="cs-logo">
+      <svg viewBox="0 0 64 64" fill="none">
+        <path d="M14 46c0-16 8-30 20-30 8 0 12 6 12 12 0 8-8 10-8 18 0 6 5 8 9 6" stroke="var(--navy)" stroke-width="3.2" stroke-linecap="round"/>
+        <circle cx="34" cy="16" r="3" fill="var(--rust)"/>
+      </svg>
+      <div class="cs-logo-text">
+        <span class="name">Chitra Story</span>
+        <span class="tag">PAINTINGS THAT TELL STORIES</span>
+      </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <div class="cs-title">
+      <h1>From Our Studio<span class="accent">To Your Walls</span></h1>
+      <p>Thoughtfully made. Mindfully delivered.</p>
+    </div>
+
+    <div class="cs-eyebrow">ART<br>CREATES<br>BETTER<br>SPACES</div>
+  </header>
+
+  <div class="journey">
+
+    <svg class="journey-path" viewBox="0 0 1000 900" preserveAspectRatio="none">
+      <path d="M500 60 C 620 140, 620 220, 500 300 S 380 460, 500 540 S 620 700, 500 800"
+            fill="none" stroke="url(#g)" stroke-width="10" stroke-linecap="round"/>
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#B9852E"/>
+          <stop offset="100%" stop-color="#5F7A6E"/>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <!-- Step 1 -->
+    <div class="step-row left">
+      <div class="step-text">
+        <h3>Printing within 24 hrs</h3>
+        <span class="badge">24 HOURS</span>
+        <p>Once your order is confirmed, we print your artwork within <strong>24 hrs</strong> using a high-quality <strong>12-colour Giclée</strong> printer.</p>
+      </div>
+      <div class="node">1</div>
+      <div class="step-visual">
+        <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="250" fill="#22394A"/>
+          <rect x="35" y="55" width="300" height="46" rx="6" fill="#16232E" stroke="#B9852E" stroke-opacity="0.4"/>
+          <rect x="50" y="66" width="60" height="24" rx="3" fill="#2C2115"/>
+          <circle cx="310" cy="78" r="6" fill="#C1602E"/>
+          <path d="M55 101 Q55 150 55 195 Q55 210 70 210 L155 210 Q170 210 170 195 L170 115" fill="#FBF3E7" opacity="0.92"/>
+          <path d="M70 115h85v70c0 8-6 14-14 14H84c-8 0-14-6-14-14z" fill="#A34A22" opacity="0.9"/>
+          <path d="M70 115h85v13H70z" fill="#DE9248" opacity="0.7"/>
+          <rect x="330" y="60" width="14" height="70" rx="6" fill="#5F7A6E" opacity="0.6"/>
+          <rect x="350" y="60" width="14" height="70" rx="6" fill="#5F7A6E" opacity="0.4"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-row right">
+      <div class="step-visual">
+        <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="250" fill="#22394A"/>
+          <g transform="translate(200,124) rotate(-6)">
+            <rect x="-115" y="-78" width="230" height="156" rx="4" fill="#FBF3E7"/>
+            <rect x="-96" y="-59" width="192" height="118" fill="#DE9248" opacity="0.8"/>
+            <rect x="-96" y="-59" width="192" height="118" fill="none" stroke="#A34A22" stroke-width="2"/>
+          </g>
+          <g stroke="#B9852E" stroke-width="2" opacity="0.5">
+            <line x1="20" y1="20" x2="20" y2="230"/>
+            <line x1="55" y1="20" x2="55" y2="230"/>
+            <line x1="345" y1="20" x2="345" y2="230"/>
+            <line x1="380" y1="20" x2="380" y2="230"/>
+          </g>
+        </svg>
+      </div>
+      <div class="node">2</div>
+      <div class="step-text">
+        <h3>Drying time</h3>
+        <span class="badge">24 – 48 HOURS</span>
+        <p>It takes <strong>24–48 hrs</strong> for the print to dry naturally and set perfectly for the next step.</p>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step-row left">
+      <div class="step-text">
+        <h3>Polishing for longevity</h3>
+        <span class="badge">24 HOURS</span>
+        <p>We then polish each piece to enhance its durability, protect the colours, and give it a <strong>premium finish</strong>.</p>
+      </div>
+      <div class="node">3</div>
+      <div class="step-visual">
+        <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="250" fill="#22394A"/>
+          <rect x="60" y="45" width="220" height="160" rx="5" fill="#DE9248" opacity="0.88"/>
+          <rect x="60" y="45" width="220" height="160" rx="5" fill="none" stroke="#FBF3E7" stroke-opacity="0.3"/>
+          <g transform="translate(270,170) rotate(-35)">
+            <rect x="-6" y="-65" width="12" height="60" rx="4" fill="#A34A22"/>
+            <rect x="-17" y="-9" width="34" height="22" rx="3" fill="#2C2115"/>
+            <path d="M-17 13 L-21 36 L21 36 L17 13 Z" fill="#FBF3E7"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step-row right">
+      <div class="step-visual">
+        <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="250" fill="#22394A"/>
+          <g transform="translate(200,135)">
+            <polygon points="-75,-10 0,-48 75,-10 0,28" fill="#DE9248"/>
+            <polygon points="-75,-10 0,28 -75,64 -75,26" fill="#A34A22"/>
+            <polygon points="75,-10 0,28 0,96 75,64" fill="#C1602E"/>
+            <polygon points="-75,-10 0,28 75,-10 0,-48" fill="none" stroke="#FBF3E7" stroke-opacity="0.3"/>
+            <circle cx="0" cy="0" r="15" fill="#FBF3E7"/>
+            <path d="M-8 0h16 M0 -8v16" stroke="#A34A22" stroke-width="2.4"/>
+          </g>
+        </svg>
+      </div>
+      <div class="node">4</div>
+      <div class="step-text">
+        <h3>Ready to ship</h3>
+        <span class="badge">READY TO SHIP</span>
+        <p>After a final drying period of <strong>24 hours</strong>, your artwork is carefully packed and ready to be shipped to your doorstep.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="progress">
+    <div class="progress-track">
+      <span class="progress-dot d0"></span>
+      <span class="progress-dot d1"></span>
+      <span class="progress-dot d2"></span>
+      <span class="progress-dot d3"></span>
+    </div>
+    <div class="progress-labels">
+      <span>Printing</span><span>Drying</span><span>Polishing</span><span>Packing</span>
+    </div>
+  </div>
+
+  <p class="cs-quote">Each step we take is with care and intention, so that when it reaches you,<br><strong>it's not just a painting</strong>, but a source of positivity for your space.</p>
+
+</section>
+
+</body>
+</html>
