@@ -98,11 +98,10 @@
   .tc-grid{
     width:100%;
     max-width:1185.83px;
-    height:710.5px;
     margin:0 auto;
     display:grid;
     grid-template-columns: 3fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: auto auto;
     gap:16px;
   }
   .tc-grid .tc-card.big{
@@ -112,7 +111,11 @@
   .tc-grid .tc-card.big .tc-name{ font-size:32px; }
 
   /* the 6 small cards fill the remaining 6 grid cells automatically
-     in row-major order because grid-auto-flow default is row */
+     in row-major order because grid-auto-flow default is row.
+     They're forced square so the grid stays true squares, not tall rectangles. */
+  .tc-grid .tc-card:not(.big){
+    aspect-ratio:1 / 1;
+  }
 
   /* items 8-11 auto-scroll continuously in a single line (marquee-style carousel) */
   .tc-row-desktop{
